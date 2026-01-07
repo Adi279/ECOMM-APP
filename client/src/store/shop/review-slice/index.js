@@ -9,9 +9,15 @@ const initialState = {
 export const addReview = createAsyncThunk(
   "/order/addReview",
   async (formdata) => {
+    const token = JSON.parse(sessionStorage.getItem("token"));
     const response = await axios.post(
       `${import.meta.env.VITE_API_URL}/api/shop/review/add`,
-      formdata
+      formdata,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
     return response.data;

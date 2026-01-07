@@ -8,10 +8,9 @@ function AdminHeader({ setOpen }) {
   const dispatch = useDispatch();
   const navigate=useNavigate()
   function handleLogout() {
-    // dispatch(logoutUser());
-       dispatch(resetTokenAndCredentials),
-        sessionStorage.clear(),
-        navigate('/auth/login')
+    dispatch(resetTokenAndCredentials());
+    sessionStorage.clear();
+    navigate('/auth/login');
   }
 
   return (

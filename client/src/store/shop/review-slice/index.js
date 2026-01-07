@@ -38,6 +38,15 @@ const reviewSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(addReview.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addReview.fulfilled, (state, action) => {
+        state.isLoading = false;
+      })
+      .addCase(addReview.rejected, (state) => {
+        state.isLoading = false;
+      })
       .addCase(getReviews.pending, (state) => {
         state.isLoading = true;
       })
